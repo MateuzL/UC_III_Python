@@ -1,4 +1,4 @@
-#ARVORE DE DECISAO
+# ARVORE DE DECISAO
 print("## PROGRAMA DE EMPRESTIMO ##\n")
 print("Responda: 0 - NÃO e 1 - SIM\n")
 
@@ -9,10 +9,10 @@ if negativado == 1:
 else:
     clt = int(input("Possui carteira assinada ?"))
     if clt == 0:
-       print("Não pode realizar empréstimo.")
+        print("Não pode realizar empréstimo.")
     else:
         casa = int(input("Possui casa própria ?"))
         if casa == 0:
-           print("Não pode realizar empréstimo.")
+            print("Não pode realizar empréstimo.")
         else:
-           print("Conceder Empréstimo")
+            print("Conceder Empréstimo")
