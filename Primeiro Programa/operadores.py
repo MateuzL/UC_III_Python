@@ -26,4 +26,4 @@ print(x)  # Aqui ele imprime o valor de 2
 x += 4
 print(x)  # Aqui ele imprime a soma da variavel + 4 = 6
 x -= 2
-print(x)  # Resultado = 4
+print(x)  # Resultado = 4 .
