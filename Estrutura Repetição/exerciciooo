@@ -1,0 +1,5 @@
+for i in range(5):
+    nome = input(f"Digite o nome do medicamento {i+1}: ")
+    preco = float(input(f"Digite o preço de {nome}: R$ "))
+    
+    
