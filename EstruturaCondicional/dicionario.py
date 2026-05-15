@@ -6,5 +6,5 @@ dados["estado"] = "MS"
 print(dados.keys())
 print(dados.items())
 print(dados.values())
-# print(dados["cep"])
-# print(dados["nome"])
+print(dados["cep"])
+print(dados["nome"])
