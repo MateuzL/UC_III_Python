@@ -21,7 +21,11 @@ while True:
         
     nome = input("Digite o nome do aluno: ")
     idade = int(input("Digite a idade do aluno: "))
-    sexo = input("Digite o sexo do aluno: ")
+    sexo = int(input("Digite o sexo do aluno: 1 - MASCULINO/ 2 - FEMININO"))
+    if sexo == 1:
+        sexo = "Masculino"
+    elif sexo == 2:
+        sexo = "Feminino"
     serie = input("Digite a série do aluno: ")
 
     print("\nDigite as 4 notas do aluno")
