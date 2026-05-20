@@ -1,0 +1,65 @@
+'''Cadastro de Produto:
+Noem do produto:
+Categoria:
+Quantidade de Estoque:
+Preço:
+===== Reltório: Categoria, Quantidade, Preço, Situação do Estoque.
+Quantidade: >10 = Bom
+Quantidade: >5 - <10 = Médio
+Quantidade: <5 = Ruim'''
+
+produtos = []
+
+def cadastrar_produto():
+    produto = {}
+    
+    produto["nome"] = input("Digite o nome do produto: ")
+    produto["categoria"] = input("Digite a categoria do produto: ")
+    produto["quantidade"] = int(input("Digite a quantidade em estoque: "))
+    produto["preco"] = float(input("Digite o preço do produto: "))
+    print("Produto cadastrado com sucesso!")
+    
+    produtos.append(produto)
+    
+    return produto
+
+def mostrar_relatorio(produtos):
+    print("===RELATÓRIO DE PRODUTOS===")
+    for produto in produtos:
+        print(f"Produto: {produto['nome']}")
+        print(f"Categoria: {produto['categoria']}")
+        print(f"Quantidade: {produto['quantidade']}")
+        print(f"Preço: R${produto['preco']:.2f}")
+        
+        if produto["quantidade"] >= 10:
+            print("Situação do Estoque: Bom")
+        elif produto["quantidade"] >= 5 and produto["quantidade"] < 10:
+            print("Situação do Estoque: Médio")
+        else:
+            print("Situação do Estoque: Ruim")
+        print("-" * 30)
+        
+def menu():
+    while True:
+        print("===MENU===")
+        print("1 - Cadastrar Produto")
+        print("2 - Mostrar Relatório")
+        print("3 - Sair")
+        op = int(input("Digite a opção desejada: "))
+        
+        if op == 1:
+            cadastrar_produto()
+            
+        elif op == 2:
+            mostrar_relatorio(produtos)
+            
+        elif op == 3:
+            print("Saindo do sistema...")
+            break
+        
+        else:
+            print("-" * 30)
+            print("Opção inválida, tente novamente!")
+            print("-" * 30)        
+
+menu()
