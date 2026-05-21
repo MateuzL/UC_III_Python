@@ -27,24 +27,30 @@ def menu():
     print("4 - Divisão")
     print("5 - Sair")
 
-    escolha = int(input("Digite o número da operação desejada: "))
-    if escolha == 5:
-        print("Saindo da calculadora...")
-        return
-        
-    a = int(input("Digite o primeiro número: "))
-    b = int(input("Digite o segundo número: "))
+    try:
+        escolha = int(input("Digite o número da operação desejada: "))
+        if escolha == 5:
+            print("Saindo da calculadora...")
+            return
 
-    if escolha == 1:
-        print(soma(a, b))
-    elif escolha == 2:
-        print(subtracao(a, b))
-    elif escolha == 3:
-        print(multiplicacao(a, b))
-    elif escolha == 4:
-        print(divisao(a, b))
-    else:
-        print("Opção inválida, tente novamente!")
+        a = int(input("Digite o primeiro número: "))
+        b = int(input("Digite o segundo número: "))
+
+        if escolha == 1:
+            print(soma(a, b))
+        elif escolha == 2:
+            print(subtracao(a, b))
+        elif escolha == 3:
+            print(multiplicacao(a, b))
+        elif escolha == 4:
+            print(divisao(a, b))
+        else:
+            print("Opção inválida, tente novamente!")
+            
+    except ValueError:
+        print("Erro! Por favor, digite apenas números.")
+    finally:
+        print("Finalizando...")
         
 menu()        
        

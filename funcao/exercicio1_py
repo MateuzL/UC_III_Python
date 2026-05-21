@@ -11,16 +11,19 @@ Quantidade: <5 = Ruim'''
 produtos = []
 
 def cadastrar_produto():
+    
     produto = {}
-    
-    produto["nome"] = input("Digite o nome do produto: ")
-    produto["categoria"] = input("Digite a categoria do produto: ")
-    produto["quantidade"] = int(input("Digite a quantidade em estoque: "))
-    produto["preco"] = float(input("Digite o preço do produto: "))
-    print("Produto cadastrado com sucesso!")
-    
-    produtos.append(produto)
-    
+    try:
+        produto["nome"] = input("Digite o nome do produto: ")
+        produto["categoria"] = input("Digite a categoria do produto: ")
+        produto["quantidade"] = int(input("Digite a quantidade em estoque: "))
+        produto["preco"] = float(input("Digite o preço do produto: "))
+        print("Produto cadastrado com sucesso!")
+        
+        produtos.append(produto)
+    except:
+        print("Erro! Quantidade e preço devem ser valores numéricos. Tente novamente!")
+        
     return produto
 
 def mostrar_relatorio(produtos):
