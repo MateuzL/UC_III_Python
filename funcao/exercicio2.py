@@ -55,6 +55,7 @@ def cadastrar_hospede():
         
     return hospede
 
+
 def menu():
     while True:
         print("===MENU===")

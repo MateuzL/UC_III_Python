@@ -3,7 +3,7 @@ Noem do produto:
 Categoria:
 Quantidade de Estoque:
 Preço:
-===== Reltório: Categoria, Quantidade, Preço, Situação do Estoque.
+===== Relatório: Categoria, Quantidade, Preço, Situação do Estoque.
 Quantidade: >10 = Bom
 Quantidade: >5 - <10 = Médio
 Quantidade: <5 = Ruim'''
