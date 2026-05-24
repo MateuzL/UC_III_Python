@@ -1,11 +1,14 @@
 '''Cadastro de Produto:
-Noem do produto:
+Nome do produto:
 Categoria:
 Quantidade de Estoque:
 Preço:
 ===== Relatório: Categoria, Quantidade, Preço, Situação do Estoque.
 Quantidade: >10 = Bom
 Quantidade: >5 - <10 = Médio
+===== Relatório: Categoria, Quantidade, Preço e Situação do Estoque:
+Quantidade: >=10 = Bom
+Quantidade: >=5 - <10 = Médio
 Quantidade: <5 = Ruim'''
 
 produtos = []
