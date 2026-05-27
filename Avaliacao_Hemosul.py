@@ -1,0 +1,365 @@
+
+
+def menu():
+    while True:
+        try:
+            print("=====REDE HEMOSUL=====")
+            print("Menu de opções: ")
+            print("1 - O que é preciso para doar sangue?")
+            print("2 - Quem não pode doar sangue? ")
+            print("3 - Descobrir se posso doar Sangue")
+            print("4 - Quem deve aguardar para doar sangue")
+            print("5 - Recomendação")
+            print("6 - Intervalo entre as doações")
+            print("7 - Sair")
+
+            opcao = int(input("Digite a opção correspondente: "))
+
+            if opcao == 1:
+                necessario()
+            elif opcao == 2:
+                nao_podedoar()
+            elif opcao == 3:
+                descobrir()
+            elif opcao == 4:
+                deve_aguardar()
+            elif opcao == 5:
+                recomendacao()
+            elif opcao == 6:
+                intervalo()
+            elif opcao == 7:
+                print("Saindo do sistema...")
+                break
+            else:
+                print("Opção inválida, tente novamente.")
+
+        except ValueError:
+            print("Digite apenas o número da opção.")
+    
+
+
+def necessario():
+    try:
+        print("\nO que é preciso para doar sangue?")
+        print("- Apresentar Documento oficial com foto")
+        print("- Pesar no mínimo 51kg")
+        print("- Ter entre 16 e 69 anos de idade.")
+        print("- Menores entre 16 e 17 anos de idade podem doar com acompanhamento e autorização do responsável.")
+        print("- Estar em boas condições de saúde, não estar gripado ou com outra infecção.")
+        print("- Estar descansado e alimentado.")
+        print("- O limite de idade para a primeira doação é de 60 anos, 11 meses e 29 dias.\n")
+
+        while True:
+            voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
+            if voltar == 0:
+                return menu()
+            else:
+                print("Digite apenas número inteiro.\n")
+                return necessario()
+
+    except ValueError:
+        print("Digite apenas número inteiro.\n")
+        return necessario()
+
+
+def nao_podedoar():
+    try:
+        print("\nQuem não pode doar?")
+        print("- Quem teve Hepatite após 11 anos de idade.")
+        print("- Doença de Chagas, Câncer, Sífilis.")
+        print("- Pessoas infectadas pelo HIV e seus parceiros.")
+        print("- Homens e mulheres com parceiro (a) eventual ou múltiplos parceiros sexuais.")
+        print("- Pessoas que compartilham seringas.")
+        print("- Pessoas que fazem uso de drogas injetáveis ilícitas.\n")
+
+        while True:
+            voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
+
+            if voltar == 0:
+                return menu()
+            else:
+                print("Digite apenas número inteiro.\n")
+                return nao_podedoar()
+
+    except ValueError:
+        print("Digite apenas número inteiro.\n")
+        return nao_podedoar()
+
+
+def descobrir():
+    print("===== Vamos descobrir se você pode doar Sangue ou não: =====\n")
+    
+    try:
+        idade = int(input("Digite sua idade: "))
+        primeira = int(input("É sua primeira doação? (1-Sim / 2-Não): "))
+
+        
+
+        
+        if idade < 16 or idade > 69:
+            print("\n Você não pode doar sangue.")
+            return 
+            
+        
+
+        if primeira == 1 and idade > 60:
+            print("\n Primeira doação permitida apenas até 60 anos.")
+            return
+        
+
+        if primeira != 1 and primeira != 2:
+            print("Opção inválida.")
+            return
+
+
+        if idade == 16 or idade == 17:
+            autorizacao = int(input("Possui autorização do responsável? (1-Sim / 2-Não): "))
+            if autorizacao == 2:
+                print("\n Não pode doar sem autorização.")
+                return
+                
+
+        peso = float(input("Digite seu peso (kg): "))
+        if peso < 51:
+            print("\n Peso insuficiente para doação.")
+            return
+        
+        while True:
+            doc = int(input("Possui documento oficial com foto? (1-Sim / 2-Não): "))
+            if doc == 2:
+                print("\n Documento obrigatório.")
+                return
+            elif doc == 1:
+                break
+            else:
+                print("Opção inválida.")
+
+        while True:
+            saude = int(input("Está saudável (sem gripe ou infecção)? (1-Sim / 2-Não): "))
+            if saude == 2:
+                print("\n Aguarde recuperação completa.")
+                return
+            elif saude == 1:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            alimentado = int(input("Está alimentado e descansado? (1-Sim / 2-Não): "))
+            if alimentado == 2:
+                print("\n Alimente-se e descanse antes da doação.")
+                return
+            elif alimentado == 1:
+                break
+            else:
+                print("Opção inválida.")
+                
+        while True:
+            hepatite = int(input("Teve hepatite após os 11 anos? (1-Sim / 2-Não): "))
+            if hepatite == 1:
+                print("\n Não pode doar.")
+                return
+            elif hepatite == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            hiv = int(input("Possui HIV? (1-Sim / 2-Não): "))
+            if hiv == 1:
+                print("\n Não pode doar.")
+                return
+            elif hiv == 2:
+                break
+            else:
+                print("Opção inválida.")
+
+        while True:
+            chagas = int(input("Possui Doença de Chagas? (1-Sim / 2-Não): "))
+            if chagas == 1:
+                print("\n Não pode doar.")
+                return
+            elif chagas == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            cancer = int(input("Possui ou teve câncer? (1-Sim / 2-Não): "))
+            if cancer == 1:
+                print("\n Não pode doar.")
+                return
+            elif cancer == 2:
+                break
+            else:
+                print("Opção inválida.")
+    
+        while True:
+            drogas = int(input("Usa drogas injetáveis ilícitas? (1-Sim / 2-Não): "))
+            if drogas == 1:
+                print("\n Não pode doar.")
+                return
+            elif drogas == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+
+        while True:
+            transfusao = int(input("Recebeu transfusão de sangue no último ano? (1-Sim / 2-Não): "))
+            if transfusao == 1:
+                print("\n Aguarde 1 ano.")
+                return
+            elif transfusao == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            amamentando = int(input("Está amamentando? (1-Sim / 2-Não): "))
+            if amamentando == 1:
+                print("\n Aguarde 1 ano após o parto.")
+                return
+            elif amamentando == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            tatuagem = int(input("Fez tatuagem ou piercing no último ano? (1-Sim / 2-Não): "))
+            if tatuagem == 1:
+                print("\n Aguarde 1 ano.")
+                return
+            elif tatuagem == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            cirurgia = int(input("Fez cirurgia recentemente? (1-Sim / 2-Não): "))
+            if cirurgia == 1:
+                print("\n Necessária avaliação clínica.")
+                return
+            elif cirurgia == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            gripe = int(input("Teve gripe recentemente? (1-Sim / 2-Não): "))
+            if gripe == 1:
+                print("\n Aguarde 14 dias.")
+                return
+            elif gripe == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            dengue = int(input("Teve dengue recentemente? (1-Sim / 2-Não): "))
+            if dengue == 1:
+                print("\n Aguarde recuperação completa.")
+                return
+            elif dengue == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+        while True:
+            vacina = int(input("Tomou vacina recentemente? (1-Sim / 2-Não): "))
+            if vacina == 1:
+                print("\n Aguarde o prazo específico da vacina, digite a opção 4 do Menu: ")
+                return
+            elif vacina == 2:
+                break
+            else:
+                print("Opção inválida.")
+        
+
+        print("\n Você está apto para doar sangue!")
+
+    except ValueError:
+        print("\n Digite apenas números válidos.")
+
+
+
+def deve_aguardar():
+    print("Deve aguardar para doar: ")
+    print("- Quem fez transfusão de sangue -> 1 ano")
+    print("- Tatuagem, micropigmentação ou piercing -> 1 ano")
+    print("- Quem se submeteu a cirurgias -> Será analisado")
+    print("- Parto normal (se não tiver amamentando) -> 3 meses")
+    print("- Amamentação -> 1 ano após data do parto")
+    print("- Dengue Clássica -> 1 mês após cura")
+    print("- Dengue grave -> 6 meses após cura")
+    print("- Infecções Sexualmente transmissíveis (IST) -> Será analisado durante a triagem clínica")
+    print("- Gripe (após o término dos sintomas) -> 14 dias")
+    print("- Medicação -> Será analisado durante triagem clínica")
+    print("- Uso de PrEP / PEP oral -> 4 meses após a suspensão completa da dose")
+    print("- Uso de PrEP injetável -> 24 meses após a última aplicação")
+    print("- Procedimentos endoscópicos (e parceiro) -> 6 meses")
+    print("- Canetas emagrecedoras (com registro na ANVISA) -> 14 dias após o início do tratamento.")
+    print("- Viagem para outros estados e/ou países -> Será avaliado durante a triagem clínica.")
+    print("- Caso tenha tomado as vacinas abaixo deverá aguardar: ")
+    print("- Antirrábica/dT (após exposição/mordedura) -> 1 ano")
+    print("- Antitetânica / Antirrábica (preventiva) -> 48 horas")
+    print("- Rubéola / Sarampo / Varicela / BCG / Febre amarela / Dengue -> 1 mês")
+    print("- Gripe (influenza) / Hepatite A e B / HPV -> 48 horas")
+    print("- Covid_19 Pfizer -> 7 dias ")
+    print("- Monkeypox -> 1 mês")
+    try:
+        while True:
+            voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
+            if voltar == 0:
+                return menu()
+            else:
+                print("Digite apenas número inteiro.\n")
+                return deve_aguardar()
+
+    except ValueError:
+        print("Digite apenas número inteiro.\n")
+        return deve_aguardar()
+
+    
+
+
+def recomendacao():
+    print("Recomendações antes de doar: ")
+    print("- Não ingerir bebida alcóolica pelo menos 12 horas antes da doação (para quem bebe com moderação)")
+    print("- Não fumar 2 horas antes e após a doação")
+    print("- Estar bem alimentado antes da doação (não estar em jejum)")
+    print("- Evitar alimentos gordurosos no dia anterior à doação")
+    print("- Ingerir líquidos em maior quantidade antes e depois da doação (sugestão: 3 copos antes da doação)")
+    try:
+        while True:
+            voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
+            if voltar == 0:
+                return menu()
+            else:
+                print("Digite apenas número inteiro.\n")
+                return recomendacao()
+
+    except ValueError:
+        print("Digite apenas número inteiro.\n")
+        return recomendacao()
+
+
+def intervalo():
+    print("Intervalo entre as doações: ")
+    print("Homem -> 60 dias / Máximo de 4 vezes no período de 12 meses")
+    print("Mulher -> 90 dias / Máximo de 3 vezes no período de 12 meses")
+    
+    try:
+        while True:
+            voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
+            if voltar == 0:
+                return menu()
+            else:
+                print("Digite apenas número inteiro.\n")
+                return intervalo()
+
+    except ValueError:
+        print("Digite apenas número inteiro.\n")
+        return intervalo()
+
+menu()    
