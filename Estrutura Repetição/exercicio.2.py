@@ -22,3 +22,5 @@ media = media_preco / 5
       
 print(f"O {nome_medicamento} é o medicamento mais barato, custa R${menor_preco}")
 print(f"Media dos preços é: {media}")
+
+'''QUEM AGUARDAR PARA DOAR SANGUE'''

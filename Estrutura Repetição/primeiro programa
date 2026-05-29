@@ -1,0 +1,14 @@
+abrindo_arquivo = open('C:/Users/vboxuser/Documents/primeiro_arquivo.txt','w')
+
+abrindo_arquivo.write('Numeros pares de 1 a 100\n')
+for i in range(1,101):
+    if i % 2 == 0:
+        abrindo_arquivo.write(f'{i}\n') 
+        
+        print("Gravação realizada com sucesso!")
+
+abrindo_arquivo.close()
+
+abertura = open('C:/Users/vboxuser/Documents/primeiro_arquivo.txt','r')
+print(abertura.read())
+abertura.close()
