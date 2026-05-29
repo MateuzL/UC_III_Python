@@ -1,64 +1,108 @@
-# CONTROLE DE HOTEL
+# =========================
+# SISTEMA DE HOTEL
+# =========================
 
+# Tupla com os tipos de quartos
+tipos_quartos = ("standard", "luxo", "premium")
+
+# Dicionário com valores das diárias
+valores_quartos = {
+    "standard": 120,
+    "luxo": 250,
+    "premium": 400
+}
+
+# Dicionário de disponibilidade
+# True = disponível
+# False = ocupado
+quartos_disponiveis = {
+    "standard": True,
+    "luxo": True,
+    "premium": True
+}
+
+# Lista para armazenar hóspedes
 hospedes = []
-quartos = {
-    "Standard": 120,
-    "Luxo": 250,
-    "Premium": 400
-}
-
-disponibilidade = {
-    "Standard": 1,
-    "Luxo": 1,
-    "Premium": 1
-}
 
 
-# FUNÇÃO PARA CLASSIFICAR A HOSPEDAGEM
-def classificar(valor_total):
-    if valor_total <= 500:
-        return "Econômico"
-    elif valor_total <= 1500:
-        return "Intermediário"
-    else:
-        return "Premium"
+# =========================
+# FUNÇÃO CADASTRAR HÓSPEDE
+# =========================
 
-
-# FUNÇÃO PARA CADASTRAR HÓSPEDE
 def cadastrar_hospede():
-
-    print("\n--- CADASTRO DE HÓSPEDE ---")
-
-    nome = input("Nome: ")
-    idade = int(input("Idade: "))
-    cpf = input("CPF: ")
-
-    print("\nTipos de quartos disponíveis:")
     
-    for tipo in quartos:
-        print(f"{tipo} - R${quartos[tipo]}")
+    print("\n===== CADASTRO DE HÓSPEDE =====")
 
-    tipo_quarto = input("\nEscolha o tipo de quarto: ")
+    nome = input("Digite o nome do hóspede: ")
 
-    # VERIFICA DISPONIBILIDADE
-    if tipo_quarto not in disponibilidade:
-        print("Tipo de quarto inválido!")
-        return
+    # Tratamento de erro
+    while True:
+        try:
+            idade = int(input("Digite a idade: "))
 
-    if disponibilidade[tipo_quarto] <= 0:
-        print("Quarto indisponível!")
-        return
+            if idade <= 0:
+                print("Digite uma idade válida.")
+            else:
+                break
 
-    diarias = int(input("Quantidade de diárias: "))
+        except ValueError:
+            print("Erro! Digite apenas números.")
 
-    valor_total = quartos[tipo_quarto] * diarias
+    cpf = input("Digite o CPF: ")
 
-    situacao = classificar(valor_total)
+    # Mostrar quartos disponíveis
+    print("\n===== QUARTOS DISPONÍVEIS =====")
 
-    # DIMINUI A DISPONIBILIDADE
-    disponibilidade[tipo_quarto] -= 1
+    for quarto, disponivel in quartos_disponiveis.items():
 
-    # DICIONÁRIO DO HÓSPEDE
+        if disponivel:
+            print(f"{quarto.capitalize()} - DISPONÍVEL")
+        else:
+            print(f"{quarto.capitalize()} - OCUPADO")
+
+    # Escolha do quarto
+    while True:
+
+        tipo_quarto = input(
+            "\nEscolha o quarto (standard/luxo/premium): "
+        ).lower()
+
+        if tipo_quarto not in tipos_quartos:
+            print("Tipo de quarto inválido.")
+
+        elif quartos_disponiveis[tipo_quarto] == False:
+            print("Quarto indisponível. Escolha outro.")
+
+        else:
+            break
+
+    # Quantidade de diárias
+    while True:
+        try:
+            diarias = int(input("Quantidade de diárias: "))
+
+            if diarias <= 0:
+                print("Digite uma quantidade válida.")
+            else:
+                break
+
+        except ValueError:
+            print("Erro! Digite apenas números.")
+
+    # Cálculo do valor total
+    valor_total = valores_quartos[tipo_quarto] * diarias
+
+    # Classificação da hospedagem
+    if valor_total <= 500:
+        categoria = "Econômico"
+
+    elif valor_total <= 1500:
+        categoria = "Intermediário"
+
+    else:
+        categoria = "Premium"
+
+    # Dicionário do hóspede
     hospede = {
         "nome": nome,
         "idade": idade,
@@ -66,18 +110,25 @@ def cadastrar_hospede():
         "quarto": tipo_quarto,
         "diarias": diarias,
         "valor_total": valor_total,
-        "situacao": situacao
+        "categoria": categoria
     }
 
+    # Adicionar na lista
     hospedes.append(hospede)
 
-    print("\nHóspede cadastrado com sucesso!")
+    # Reservar quarto
+    quartos_disponiveis[tipo_quarto] = False
+
+    print("\nReserva realizada com sucesso!")
 
 
-# FUNÇÃO PARA MOSTRAR HÓSPEDES
-def mostrar_hospedes():
+# =========================
+# FUNÇÃO LISTAR HÓSPEDES
+# =========================
 
-    print("\n--- LISTA DE HÓSPEDES ---")
+def listar_hospedes():
+
+    print("\n===== LISTA DE HÓSPEDES =====")
 
     if len(hospedes) == 0:
         print("Nenhum hóspede cadastrado.")
@@ -85,48 +136,67 @@ def mostrar_hospedes():
 
     for hospede in hospedes:
 
-        print("\nNome:", hospede["nome"])
-        print("Idade:", hospede["idade"])
-        print("CPF:", hospede["cpf"])
-        print("Quarto:", hospede["quarto"])
-        print("Diárias:", hospede["diarias"])
-        print("Valor Total: R$", hospede["valor_total"])
-        print("Situação:", hospede["situacao"])
+        print(f"""
+Nome: {hospede["nome"]}
+Idade: {hospede["idade"]}
+CPF: {hospede["cpf"]}
+Quarto: {hospede["quarto"]}
+Diárias: {hospede["diarias"]}
+Valor Total: R$ {hospede["valor_total"]:.2f}
+Categoria: {hospede["categoria"]}
+""")
 
 
-# FUNÇÃO PARA MOSTRAR DISPONIBILIDADE
-def mostrar_disponibilidade():
+# =========================
+# FUNÇÃO MOSTRAR QUARTOS
+# =========================
 
-    print("\n--- DISPONIBILIDADE DE QUARTOS ---")
+def mostrar_quartos():
 
-    for tipo in disponibilidade:
-        print(tipo, ":", disponibilidade[tipo], "quartos disponíveis")
+    print("\n===== SITUAÇÃO DOS QUARTOS =====")
+
+    for quarto, disponivel in quartos_disponiveis.items():
+
+        if disponivel:
+            print(f"{quarto.capitalize()} - DISPONÍVEL")
+
+        else:
+            print(f"{quarto.capitalize()} - OCUPADO")
 
 
+# =========================
 # MENU PRINCIPAL
-opcao = ""
+# =========================
 
-while opcao != "4":
+while True:
 
-    print("\n========== CONTROLE DE HOTEL ==========")
-    print("1 - Cadastrar Hóspede")
-    print("2 - Mostrar Hóspedes")
-    print("3 - Mostrar Disponibilidade")
-    print("4 - Sair")
+    print("""
+========== HOTEL ==========
 
-    opcao = input("Escolha uma opção: ")
+1 - Cadastrar hóspede
+2 - Listar hóspedes
+3 - Mostrar quartos disponíveis
+4 - Sair
+""")
 
-    if opcao == "1":
-        cadastrar_hospede()
+    try:
+        opcao = int(input("Escolha uma opção: "))
 
-    elif opcao == "2":
-        mostrar_hospedes()
+        if opcao == 1:
+            cadastrar_hospede()
 
-    elif opcao == "3":
-        mostrar_disponibilidade()
+        elif opcao == 2:
+            listar_hospedes()
 
-    elif opcao == "4":
-        print("Sistema encerrado.")
+        elif opcao == 3:
+            mostrar_quartos()
 
-    else:
-        print("Opção inválida!")
+        elif opcao == 4:
+            print("Sistema encerrado.")
+            break
+
+        else:
+            print("Opção inválida.")
+
+    except ValueError:
+        print("Erro! Digite apenas números.")

@@ -25,7 +25,7 @@ def cadastrar_disciplinas(i):
     for i in range(4):
         nota = float(input(f"Digite a {i+1}ª Nota: "))
         disciplina["notas"].append(nota)
-    disciplina["media"] = calcular_media(disciplina["notas"])
+        disciplina["media"] = calcular_media(disciplina["notas"])
     
     return disciplina
         
@@ -70,10 +70,9 @@ def mostrar_relatorio(alunos):
             print(f"Idade: {aluno["idade"]}")
             print(f"Sexo: {aluno["sexo"]}")
             print(f"Série: {aluno["serie"]}")
-            
-            print("\nDisciplinas: ")
-            for disciplina in aluno["disciplinas"]:
-                print(f"{disciplina["nome"]} -> Média: {disciplina["media"]}:.2f")
+            print("Disciplinas: ")
+            for disciplina in aluno["disciplina"]:
+                print(f"{disciplina["nome"]} -> Média: {disciplina["media"]:.2f}")
                 
 menu()
                                 
