@@ -52,7 +52,7 @@ def necessario():
         while True:
             voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
             if voltar == 0:
-                return menu()
+                return
             else:
                 print("Digite apenas número inteiro.\n")
                 return necessario()
@@ -76,10 +76,10 @@ def nao_podedoar():
             voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
 
             if voltar == 0:
-                return menu()
+                return
             else:
                 print("Digite apenas número inteiro.\n")
-                return nao_podedoar()
+                return nao_podedoar() 
 
     except ValueError:
         print("Digite apenas número inteiro.\n")
@@ -322,7 +322,7 @@ def deve_aguardar():
         while True:
             voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
             if voltar == 0:
-                return menu()
+                return
             else:
                 print("Digite apenas número inteiro.\n")
                 return deve_aguardar()
@@ -345,7 +345,7 @@ def recomendacao():
         while True:
             voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
             if voltar == 0:
-                return menu()
+                return
             else:
                 print("Digite apenas número inteiro.\n")
                 return recomendacao()
@@ -364,7 +364,7 @@ def intervalo():
         while True:
             voltar = int(input("Se deseja voltar ao menu digite 0: \n"))
             if voltar == 0:
-                return menu()
+                return
             else:
                 print("Digite apenas número inteiro.\n")
                 return intervalo()
