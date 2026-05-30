@@ -16,7 +16,7 @@ def salvar_usuario_arquivo(usuario):
     #Tenta abrir e gravar no arquivo
     try:
         #Abre o arquivo
-        arquivo = open('C:/Users/vboxuser/Documents/cadastro_usuario.txt', 'a', encoding='utf-8')  #encoding serve para ler o nome com acento
+        arquivo = open('C:/Users/lucen/arquivospython/cadastro_usuario.txt', 'a', encoding='utf-8')  #encoding serve para ler o nome com acento
         
         #Escreve os dados do usuário no arquivo txt separando por ;
         arquivo.write(
@@ -96,7 +96,7 @@ def registrar_chamados(usuario_logado):
 def salvar_chamado_arquivo(chamado):
     try:
         #Abre o arquivo
-        arquivo_chamado = open('C:/Users/vboxuser/Documents/chamado_usuario.txt', 'a', encoding='utf-8')  #encoding serve para ler o nome com acento
+        arquivo_chamado = open('C:/Users/lucen/arquivospython/chamado_usuario.txt', 'a', encoding='utf-8')  #encoding serve para ler o nome com acento
         
         #Escreve os dados do usuário no arquivo txt separando por ;
         arquivo_chamado.write(
@@ -123,7 +123,7 @@ def salvar_chamado_arquivo(chamado):
 def carregar_chamados():
     try:
         #Abre o arquivo txt no modo leitura "r"
-        arquivo_chamado = open("C:/Users/vboxuser/Documents/chamado_usuario.txt", 'r', encoding='utf-8')
+        arquivo_chamado = open("C:/Users/lucen/arquivospython/chamado_usuario.txt", 'r', encoding='utf-8')
         
         #Percorre cada linha dentro do arquivo txt
         for linha in arquivo_chamado:
@@ -145,7 +145,7 @@ def carregar_chamados():
                     "status": dados[3]
                 }
                 
-                #Adiciona o usuário dentro da lista de usuarios
+                #Adiciona o chamado dentro da lista de chamados
                 chamados.append(chamado)
              
         #Fecha o arquivo após leitura        
@@ -160,7 +160,7 @@ def carregar_chamados():
     #Sempre irá executar    
     finally:
         #Mensagem para mostrar o carregamento de usuário
-        print("Chamado carregado com Sucesso!")
+        print("Chamados carregados com Sucesso!")
         
     
     
@@ -216,7 +216,7 @@ def carregar_usuario():
     #Try para tentar abrir o arquivo txt
     try:
         #Abre o arquivo txt no modo leitura "r"
-        arquivo = open("C:/Users/vboxuser/Documents/cadastro_usuario.txt", 'r', encoding='utf-8')
+        arquivo = open("C:/Users/lucen/arquivospython/cadastro_usuario.txt", 'r', encoding='utf-8')
         
         #Percorre cada linha dentro do arquivo txt
         for linha in arquivo:
