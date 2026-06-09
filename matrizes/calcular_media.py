@@ -9,9 +9,12 @@ notas = [
 cont = soma = 0
 
 for linha in range(len(notas)):
+    print(f"Linhas percorridas: {linha}")
     for coluna in range(len(notas[linha])):
-        print(soma)
-        print(cont)
+        print(f"Colunas percorridas: {coluna}")
+        print(f"Valores percorridos: {notas[linha][coluna]}")
+        #print(soma)
+        #print(cont)
         soma = soma + notas[linha][coluna]
         cont = cont + 1
         
