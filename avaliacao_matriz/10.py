@@ -1,6 +1,14 @@
-notas = []
-#Solicitando notas
+''' Uma escola deseja armazenar as notas de 3 alunos em 4 bimestres.
+Utilize uma matriz para armazenar as notas e exiba:
+- Todas as notas
+- Média de cada aluno
+- Situação (Aprovado ou Reprovado)
+- Considere média mínima 7'''
 
+
+notas = []
+
+#Solicitando notas
 for aluno in range(3):
     print(f"Aluno {aluno+1}: ")
     linha = []
