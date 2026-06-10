@@ -18,5 +18,5 @@ for l in range(len(matriz)):
         if matriz[l][c] % 2 == 0:
             pares = pares + 1
             
-print(f"A quantidade de números pares é: {pares}")
+print(f"A quantidade de números pares nessa matriz é: {pares}")
         

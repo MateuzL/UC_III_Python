@@ -69,7 +69,7 @@ def cadastrar_atendimento():
 
 
 def gerar_relatorio():
-    arquivo = open("C:\Users/avaliacao_clinica.txt", "w", encoding="utf-8")
+    arquivo = open("C:/Users/lucen/Documents/avaliacao_clinica.txt", "w", encoding="utf-8")
 
     arquivo.write()
 

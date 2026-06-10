@@ -1,4 +1,4 @@
-#Solicite ao usuário os valores de uma matriz 3x3, ao final exibba a matriz completa
+#Solicite ao usuário os valores de uma matriz 3x3, ao final exiba a matriz completa
 
 matriz = []
 
