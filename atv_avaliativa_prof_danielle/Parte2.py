@@ -10,6 +10,8 @@ calculando automaticamente a média dos alunos.'''
 
 
 alunos = []
+matriz_notas = []
+
 
 # Função para cadastrar aluno
 def cadastrar_aluno():
@@ -22,7 +24,7 @@ def cadastrar_aluno():
         "notas": [0, 0, 0, 0]
     }
     alunos.append(aluno)
-    print(alunos)
+    matriz_notas.append([0, 0, 0, 0])
     print("Aluno cadastrado com sucesso.")
     
     
@@ -50,7 +52,7 @@ def lancar_notas():
         
     alunos[indice]["notas"] = notas
     
-    print(alunos)
+    matriz_notas[indice] = notas
     
     print("Notas cadastradas com sucesso!")
     
@@ -59,7 +61,7 @@ def lancar_notas():
 def calcular_media(notas):
     return sum(notas) / len(notas)
     
-# Função condiocional para a situação da média
+# Função condicional para a situação da média
 def situacao(media):
     if media >= 7:
         return "APROVADO!"
@@ -98,25 +100,49 @@ def consultar_aluno():
     print(f"Situação: {situacao(media)}\n")
     
     
-'''def relatorio_geral():
+def relatorio_geral():
     if len(alunos) == 0:
         print("Nenhum aluno cadastrado.")
         return
     
-    medias = [calcular_media(a["notas"]) for a in alunos]'''
+    medias = [calcular_media(a["notas"]) for a in alunos]
+    
+    total_alunos = len(alunos)
+    media_turma = sum(medias) / total_alunos
+    melhor_aluno = alunos[medias.index(max(medias))]["nome"]
+    pior_aluno = alunos[medias.index(min(medias))]["nome"]
+    
+    aprovados = sum(1 for m in medias if m >= 7)
+    recuperacao = sum(1 for m in medias if 5 <= m < 7)
+    reprovados = sum(1 for m in medias if m < 5)
+    
+    print("=== RELATÓRIO GERAL ===")
+    print("-"*20)
+    
+    print(f"Total de alunos: {total_alunos}")
+    print(f"Média dos alunos: {media_turma:.2f}")
+    print(f"Melhor aluno: {melhor_aluno} com média: {max(medias):.2f}")
+    print(f"Pior aluno: {pior_aluno} com média: {min(medias):.2f}")
+    print(f"Aprovados: {aprovados}")
+    print(f"Recuperação: {recuperacao}")
+    print(f"Reprovados: {reprovados}\n")
     
     
     
     
-'''def salvar_dados():
-    arquivo = open("C:/Users/Documents/gerenciamento_escolar.txt", 'w', encoding='utf-8')
+def salvar_dados():
+    with open("c:/Users/vboxuser/Documents/gerenciamento_escolar.txt", 'w', encoding='utf-8') as arquivo:
+        for aluno in alunos:
+            media = calcular_media(aluno["notas"])
+            arquivo.write(f"Nome: {aluno['nome']}\n")
+            arquivo.write(f"Idade: {aluno['idade']}\n")
+            arquivo.write(f"Turma: {aluno['turma']}\n")
+            arquivo.write(f"Notas: {aluno['notas']}\n")
+            arquivo.write(f"Média: {media:.2f}\n")
+            arquivo.write(f"Situação: {situacao(media)}\n")
+            arquivo.write("="*30 + "\n")
     
-    arquivo.write(
-        
-    )
-     
-     
-    arquivo.close()'''
+    print("Dados salvos com sucesso no arquivo 'gerenciamento_escolar.txt'.\n")
     
     
 # Função Menu
@@ -144,10 +170,10 @@ def menu():
                 consultar_aluno()
                 
             elif op == 4:
-                print("relatorio_geral()")
+                relatorio_geral()
                 
             elif op == 5:
-                print("salvar_dados()")
+                salvar_dados()
                 
             elif op == 6:
                 print("Saindo do sistema...")
