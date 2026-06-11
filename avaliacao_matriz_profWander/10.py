@@ -7,6 +7,8 @@ Utilize uma matriz para armazenar as notas e exiba:
 
 
 notas = []
+media = 0
+
 
 #Solicitando notas
 for aluno in range(3):
@@ -19,8 +21,24 @@ for aluno in range(3):
     
 #Mostrando todas as notas
 for aluno in range(len(notas)):
+    soma = 0
     print(f"Aluno {aluno+1}: ")
     for bimestre in range(len(notas[aluno])):
+        soma = soma + notas[aluno][bimestre]     #Somando as notas de cada aluno 
         print(notas[aluno][bimestre], end=" ")
     print()
+    media = (soma / len(notas[aluno]))          #Dividindo as notas por 4 para armazenar a média
+    print(f"Média: {media}")
+    
+    #Mostrando a situação de acordo com a nota
+    if media >= 7:
+        situacao = "APROVADO!"
+    else:
+        situacao = "REPROVADO!"
+        
+    print(f"Situação: {situacao}")
+    print()
+    
+
+    
     
