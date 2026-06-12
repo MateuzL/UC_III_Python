@@ -18,11 +18,12 @@ def cadastrar_aluno():
     print("===CADASTRO DE ALUNO===")
     
     aluno = {
-        "nome": input("Digite o nome do aluno: "),
+        "nome": input("Digite o nome do aluno: ").title(),
         "idade": int(input("Digite a idade do aluno: ")),
         "turma": input("Digite a turma: "),
         "notas": [0, 0, 0, 0]
     }
+    
     alunos.append(aluno)
     matriz_notas.append([0, 0, 0, 0])
     print("Aluno cadastrado com sucesso.")
@@ -53,7 +54,7 @@ def lancar_notas():
     alunos[indice]["notas"] = notas
     
     matriz_notas[indice] = notas
-    
+    #print(matriz_notas)
     print("Notas cadastradas com sucesso!")
     
 
@@ -89,6 +90,7 @@ def consultar_aluno():
             return
         
     aluno = alunos[indice]
+    
     media = calcular_media(aluno["notas"])
     
     print("\n--- Dados do Aluno ---")
