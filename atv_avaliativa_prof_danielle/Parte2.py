@@ -103,6 +103,7 @@ def consultar_aluno():
     
     
 def relatorio_geral():
+    print("===RELATÓRIO GERAL===")
     if len(alunos) == 0:
         print("Nenhum aluno cadastrado.")
         return
