@@ -36,8 +36,11 @@ def lancar_notas():
         print("Nenhum aluno cadastrado.")
         return
     
-    for i, aluno in enumerate(alunos):
-        print(f"{i + 1} - {aluno['nome']}")   
+    i = 1
+
+    for aluno in alunos:
+        print(f"{i} - {aluno['nome']}")
+        i += 1   
     
     indice = int(input("Escolha o aluno: ")) - 1
     
@@ -59,8 +62,8 @@ def lancar_notas():
     
 
 # Função para calcular a média    
-def calcular_media(notas):
-    return sum(notas) / len(notas)
+def calcular_media(linha_matriz):
+    return sum(linha_matriz) / len(linha_matriz)
     
 # Função condicional para a situação da média
 def situacao(media):
@@ -80,8 +83,11 @@ def consultar_aluno():
         print("Nenhum aluno cadastrado.")
         return
     
-    for i, aluno in enumerate(alunos):
-        print(f"{i+1} - {aluno['nome']}")
+    i = 1
+
+    for aluno in alunos:
+        print(f"{i} - {aluno['nome']}")
+        i += 1
         
     indice = int(input("Escolha o aluno: ")) - 1
     
@@ -91,7 +97,7 @@ def consultar_aluno():
         
     aluno = alunos[indice]
     
-    media = calcular_media(aluno["notas"])
+    media = calcular_media(matriz_notas[indice])
     
     print("\n--- Dados do Aluno ---")
     print(f"Nome: {aluno['nome']}")
@@ -108,12 +114,27 @@ def relatorio_geral():
         print("Nenhum aluno cadastrado.")
         return
     
-    medias = [calcular_media(a["notas"]) for a in alunos]
+    medias = []
+
+    for linha in matriz_notas:
+        medias.append(calcular_media(linha))
     
     total_alunos = len(alunos)
     media_turma = sum(medias) / total_alunos
-    melhor_aluno = alunos[medias.index(max(medias))]["nome"]
-    pior_aluno = alunos[medias.index(min(medias))]["nome"]
+    melhor_aluno = alunos[0]["nome"]
+    pior_aluno = alunos[0]["nome"]
+
+    maior_media = medias[0]
+    menor_media = medias[0]
+
+    for i in range(len(medias)):
+        if medias[i] > maior_media:
+            maior_media = medias[i]
+            melhor_aluno = alunos[i]["nome"]
+
+        if medias[i] < menor_media:
+            menor_media = medias[i]
+            pior_aluno = alunos[i]["nome"]
     
     aprovados = sum(1 for m in medias if m >= 7)
     recuperacao = sum(1 for m in medias if 5 <= m < 7)
@@ -124,8 +145,8 @@ def relatorio_geral():
     
     print(f"Total de alunos: {total_alunos}")
     print(f"Média dos alunos: {media_turma:.2f}")
-    print(f"Melhor aluno: {melhor_aluno} com média: {max(medias):.2f}")
-    print(f"Pior aluno: {pior_aluno} com média: {min(medias):.2f}")
+    print(f"Melhor aluno: {melhor_aluno} com média: {maior_media:.2f}")
+    print(f"Pior aluno: {pior_aluno} com média: {menor_media:.2f}")
     print(f"Aprovados: {aprovados}")
     print(f"Recuperação: {recuperacao}")
     print(f"Reprovados: {reprovados}\n")
@@ -135,15 +156,20 @@ def relatorio_geral():
     
 def salvar_dados():
     with open("c:/Users/vboxuser/Documents/gerenciamento_escolar.txt", 'w', encoding='utf-8') as arquivo:
+        i = 0
+
         for aluno in alunos:
-            media = calcular_media(aluno["notas"])
+            media = calcular_media(matriz_notas[i])
+
             arquivo.write(f"Nome: {aluno['nome']}\n")
             arquivo.write(f"Idade: {aluno['idade']}\n")
             arquivo.write(f"Turma: {aluno['turma']}\n")
             arquivo.write(f"Notas: {aluno['notas']}\n")
             arquivo.write(f"Média: {media:.2f}\n")
             arquivo.write(f"Situação: {situacao(media)}\n")
-            arquivo.write("="*30 + "\n")
+            arquivo.write("=" * 30 + "\n")
+
+            i += 1
     
     print("Dados salvos com sucesso no arquivo 'gerenciamento_escolar.txt'.\n")
     
