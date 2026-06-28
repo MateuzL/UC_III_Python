@@ -30,7 +30,7 @@ for aluno in range(len(notas)):
     media = (soma / len(notas[aluno]))          #Dividindo as notas por 4 para armazenar a média
     print(f"Média: {media}")
     
-    #Mostrando a situação de acordo com a nota
+    #Mostrando a situação de acordo com a média
     if media >= 7:
         situacao = "APROVADO!"
     else:
