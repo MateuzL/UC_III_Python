@@ -11,3 +11,4 @@ for i in range(5):
 print("Nomes cadastrados: ")
 for nome in lista:         #Percorrendo a lista e imprimindo cada nome
     print("-", nome)
+    
