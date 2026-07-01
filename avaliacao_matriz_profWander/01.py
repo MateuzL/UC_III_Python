@@ -4,10 +4,10 @@ matriz = [
     [1, 2],
     [3, 4]
 ]
-
+a = 0 
 
 for l in range(len(matriz)):
     for c in range(len(matriz[l])):
         print(matriz[l][c], end=" ")
-    print()
+    print() 
         
